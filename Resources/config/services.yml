@@ -4,6 +4,12 @@ services:
         arguments: ['', '']
         public: false
 
+    cas.security.authenticator:
+        class: L3\Bundle\CasBundle\Security\CasAuthenticator
+        arguments:
+            '$config': '%cas%'
+        public: false
+
     cas.security.authentication.listener:
         class: L3\Bundle\CasBundle\Security\CasListener
         arguments: ['@security.token_storage', '@security.authentication.manager', '%cas%']
